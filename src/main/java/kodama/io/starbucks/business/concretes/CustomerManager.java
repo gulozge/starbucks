@@ -32,7 +32,7 @@ public class CustomerManager implements CustomerService {
 
     private void checkIfRealPerson(Customer customer) throws Exception {
         if (!mernisServiceAdapter.checkIfRealPerson(customer)){
-            throw new RuntimeException("böyle bir kişi yok hata");
+            throw new RuntimeException("böyle bir kişi yok hata  ");
         }
     }
     private void alreadyIsCustomer(String  nationalitiyIdenditiy){
