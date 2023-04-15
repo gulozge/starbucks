@@ -1,6 +1,7 @@
 package kodama.io.starbucks.business.concretes;
 
 import kodama.io.starbucks.adapters.MernisServiceAdapter;
+import kodama.io.starbucks.business.abstracts.CustomerCheckService;
 import kodama.io.starbucks.business.abstracts.CustomerService;
 import kodama.io.starbucks.business.dto.requests.CreateCustomerRequest;
 import kodama.io.starbucks.business.dto.responses.CreateCustomerResponse;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Service;
 public class CustomerManager implements CustomerService {
     private final CustomerRepository repository;
     private final ModelMapper mapper;
-    private final MernisServiceAdapter mernisServiceAdapter;
+    private final CustomerCheckService customerCheckService;
 
 
     @Override
@@ -31,7 +32,7 @@ public class CustomerManager implements CustomerService {
     }
 
     private void checkIfRealPerson(Customer customer) throws Exception {
-        if (!mernisServiceAdapter.checkIfRealPerson(customer)){
+        if (!customerCheckService.checkIfRealPerson(customer)){
             throw new RuntimeException("böyle bir kişi yok hata  ");
         }
     }
